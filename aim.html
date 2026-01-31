@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Blog - Anushrut Ghimire</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #fefefe;
+            color: #2c3e50;
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 1000;
+            padding: 15px 30px;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+        
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #d4691a, #8b4513);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: #2c3e50;
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #d4691a;
+        }
+        
+        .back-btn {
+            background: #d4691a;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: #8b4513;
+            transform: translateY(-1px);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            background: linear-gradient(135deg, #f8f6f0 0%, #fefefe 100%);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .project-badge {
+            display: inline-block;
+            background: rgba(212, 105, 26, 0.1);
+            color: #d4691a;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .hero-description {
+            font-size: 1.2rem;
+            color: #5d4e37;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-label {
+            font-size: 0.9rem;
+            color: #8b4513;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .meta-value {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+        
+        .tech-stack {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .tech-tag {
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(212, 105, 26, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #d4691a;
+            font-weight: 500;
+        }
+        
+        /* Main Content */
+        .main-content {
+            padding: 80px 0;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+        
+        .content-section {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 40px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 105, 26, 0.1);
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .section-content p {
+            margin-bottom: 20px;
+            color: rgba(44, 62, 80, 0.8);
+            font-size: 1rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 105, 26, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            width: 20px;
+            height: 20px;
+            background: #d4691a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+        
+        /* Project Images */
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 80px 0;
+        }
+        
+        .image-card {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid rgba(212, 105, 26, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #f8f6f0, #f0f0f0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #8b4513;
+            font-weight: 500;
+        }
+        
+        .image-caption {
+            padding: 20px;
+        }
+        
+        .image-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 8px;
+        }
+        
+        .image-description {
+            font-size: 0.9rem;
+            color: rgba(44, 62, 80, 0.7);
+        }
+        
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+        
+        .sidebar-card {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 16px;
+            border: 1px solid rgba(212, 105, 26, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .sidebar-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .project-links {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .project-link {
+            display: block;
+            padding: 12px 20px;
+            background: rgba(212, 105, 26, 0.1);
+            color: #d4691a;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .project-link:hover {
+            background: #d4691a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 20px;
+            background: rgba(212, 105, 26, 0.05);
+            border-radius: 12px;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #d4691a;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #8b4513;
+            margin-top: 5px;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, rgba(212, 105, 26, 0.1), rgba(139, 69, 19, 0.1));
+            padding: 60px 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin: 80px 0;
+        }
+        
+        .cta-title {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        
+        .cta-description {
+            font-size: 1.1rem;
+            color: rgba(44, 62, 80, 0.8);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-button {
+            padding: 15px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-primary {
+            background: #d4691a;
+            color: white;
+            border: 2px solid #d4691a;
+        }
+        
+        .cta-primary:hover {
+            background: transparent;
+            color: #d4691a;
+            transform: translateY(-2px);
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: #d4691a;
+            border: 2px solid #d4691a;
+        }
+        
+        .cta-secondary:hover {
+            background: #d4691a;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                left: 10px;
+                right: 10px;
+                transform: none;
+                padding: 10px 20px;
+            }
+            
+            .nav-content {
+                gap: 20px;
+            }
+            
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .project-meta {
+                gap: 20px;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .sidebar {
+                position: static;
+            }
+            
+            .tech-stack {
+                gap: 10px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .cta-button {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">ANUSHRUT</div>
+            <ul class="nav-links">
+                <li><a href="#overview">Overview</a></li>
+            </ul>
+            <a href="index.html" class="back-btn">← Back to menu</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="project-badge">Unsid</div>
+                <h1>What was my aim?</h1>
+                <p class="hero-description">Everyone has their own aim in life. My aim is like Pluto  once called a planet, now known as a dwarf planet, but some people still believe it's a planet. In the same way, I had my own aim, but my family wanted me to follow a different one.
+
+A long time ago, my aim was to become a Pilot. But due to some reasons, I changed my aim and decided to become an engineer instead. </p>
+                
+                <div class="project-meta">
+                    <div class="meta-item">
+                        <div class="meta-label">Aim time</div>
+                        <div class="meta-value">2014</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Previous aim </div>
+                        <div class="meta-value">Pilot</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="meta-label">Present Aim</div>
+                        <div class="meta-value">engineer</div>
+                    </div>
+                </div>
+                
+
+            </div>
+        </div>
+    </section>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Journey</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html, body {
+            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        /* Main layout full height */
+        .main-content {
+            min-height: 100vh;
+            display: flex;
+            align-items: stretch;
+        }
+
+        .container {
+            flex: 1;
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 40px;
+        }
+
+        .main-column {
+            flex: 1;
+        }
+
+        .content-section {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px 10px;
+            }
+
+            .section-title {
+                font-size: 20px;
+            }
+
+            .section-content p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-grid">
+                <!-- Main Column -->
+                <div class="main-column">
+                    <!-- Section 1 -->
+                    <div class="content-section" id="overview">
+                        <h2 class="section-title">How I Wanted to Become a Pilot</h2>
+                        <div class="section-content">
+                            <p>I still remember the first time I flew on a plane. I was with my grandfather, and we were flying from Kathmandu (KTM) to Bharatpur. I was very excited but also a little nervous because I had never been on a plane before.</p>
+                            <p>My grandfather gave me the window seat so I could see everything outside. Before the plane took off, he told me, “The plane is flown by a pilot.” I thought that was amazing! I asked him if I could see the cockpit, but he said, “Only the pilot can go there and fly the plane.” That made me even more curious about how planes work.</p>
+                            <p>When the plane started flying, I got a bit scared. It was my first time feeling the plane lift off the ground. I asked my grandfather how long the flight would be, and he said it would take about 20 minutes. That made me feel a little better.</p>
+                            <p>During the flight, I looked out the window and saw something I’ll never forget  Mount Everest! It was so big and beautiful. I also saw other mountains like Machhapuchhre. The view was amazing, and I couldn’t believe how high we were.</p>
+                            <p>When the plane started to land, I got scared again because it felt like we were falling fast. But the landing was safe, and soon we were on the ground. Even though I was scared, it was one of the best and craziest experiences of my life.</p>
+                            <p>After that day, I proudly told my friends that I had flown on a plane. I would point to planes in the sky and say, “I was in a plane just like that!” It was a memory I will always treasure.
+From that day, I decided I wanted to become a pilot. I wanted to be the one flying the plane, just like the pilot my grandfather told me about.</p>
+                        </div>
+                    </div>
+
+                    <!-- Section 2 -->
+                    <div class="content-section" id="tech">
+                        <h2 class="section-title">Why I Changed to Engineer</h2>
+                        <div class="section-content">
+                      <p>Since I was a child, I always dreamed of becoming a pilot. Flying in the sky, seeing the world from above, and controlling such a big and powerful machine felt exciting to me. Pilots are admired for their courage and responsibility, and I wanted to be one of them. But as I grew older, I started to think about another choice for my future, and that was engineering.</p>
+                      <p>The main reason I wanted to become an engineer was because of my interest in working with computers. I liked the idea of doing my work by sitting in one place and using my skills with technology. I found happiness in solving problems and creating things on a computer. This made me believe that engineering could be a good path for me. Unlike being a pilot, where the job is active and full of travel, engineering seemed calm, stable, and creative.</p>
+                      <p>My family also influenced my decision. They wanted me to focus on a career that gave stability and long-term growth, so I began to set my mind on becoming an engineer. To prepare myself, I decided to study computer science in class 11. I wanted to learn more about programming, logic, and computers at an early stage. This subject gave me extra knowledge and made me feel more confident in my decision.</p>
+                      <p>Even though I still admire pilots and sometimes imagine myself flying a plane, I now feel happy about my choice to become an engineer. With engineering, I can use my knowledge, creativity, and hard work to build a successful future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
+
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Highlight active nav item on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('.content-section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            sections.forEach((section, index) => {
+                const rect = section.getBoundingClientRect();
+                if (rect.top <= 200 && rect.bottom >= 200) {
+                    navLinks.forEach(link => link.style.color = '#2c3e50');
+                    if (navLinks[index]) {
+                        navLinks[index].style.color = '#d4691a';
+                    }
+                }
+            });
+        });
+    </script>
+    <!-- Back to Top Button -->
+<button id="backToTop" style="
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    padding: 12px 18px;
+    border: none;
+    border-radius: 50px;
+    background: #d4691a;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+">
+↑ Top
+</button>
+<script>
+  const backToTop = document.getElementById("backToTop");
+
+  // Show/hide button on scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      backToTop.style.display = "block";
+    } else {
+      backToTop.style.display = "none";
+    }
+  });
+
+  // Scroll smoothly to top on click
+  backToTop.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+</body>
+</html>
