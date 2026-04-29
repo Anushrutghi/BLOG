@@ -56,8 +56,9 @@
       content: "";
       position: absolute;
       inset: 0;
-      background-image: linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
-                        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
+      background-image:
+        linear-gradient(rgba(0,0,0,0.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.035) 1px, transparent 1px);
       background-size: 42px 42px;
       mask-image: linear-gradient(to bottom, black, transparent);
     }
@@ -82,6 +83,7 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 22px;
+      gap: 16px;
     }
 
     .brand {
@@ -92,6 +94,7 @@
       color: var(--text);
       font-weight: 800;
       letter-spacing: -0.03em;
+      white-space: nowrap;
     }
 
     .brand-mark {
@@ -444,23 +447,45 @@
     }
 
     .socials a {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       border-radius: 16px;
       display: grid;
       place-items: center;
-      color: var(--primary);
       background: white;
       border: 1px solid var(--border);
       text-decoration: none;
-      font-weight: 900;
       transition: 0.25s ease;
+      font-size: 20px;
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .socials a img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+      filter: invert(42%) sepia(89%) saturate(1025%) hue-rotate(355deg) brightness(90%) contrast(91%);
     }
 
     .socials a:hover {
       background: var(--primary);
       color: white;
-      transform: translateY(-3px);
+      transform: translateY(-4px);
+    }
+
+    .socials a:hover img {
+      filter: invert(100%);
+    }
+
+    .contact-btn {
+      width: auto !important;
+      padding: 0 18px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary), var(--secondary)) !important;
+      color: white !important;
+      border: none !important;
     }
 
     .cta-section {
@@ -612,56 +637,15 @@
       section {
         padding: 64px 16px;
       }
-      .socials {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
 
-.socials a {
-  width: 48px;
-  height: 48px;
-  border-radius: 16px;
-  display: grid;
-  place-items: center;
-  background: white;
-  border: 1px solid var(--border);
-  text-decoration: none;
-  transition: 0.25s ease;
-  font-size: 20px;
-}
+      .socials a {
+        width: 46px;
+        height: 46px;
+      }
 
-.socials a img {
-  width: 22px;
-  height: 22px;
-  object-fit: contain;
-  filter: invert(42%) sepia(89%) saturate(1025%) hue-rotate(355deg) brightness(90%) contrast(91%);
-}
-
-.socials a:hover {
-  background: var(--primary);
-  transform: translateY(-4px);
-}
-
-.socials a:hover img {
-  filter: invert(100%);
-}
-
-.socials a:hover {
-  color: white;
-}
-
-/* Contact Button */
-.contact-btn {
-  width: auto !important;
-  padding: 0 18px;
-  font-size: 0.9rem;
-  font-weight: 800;
-  background: linear-gradient(135deg, var(--primary), var(--secondary));
-  color: white !important;
-  border: none;
-}
+      .contact-btn {
+        width: 100% !important;
+      }
     }
   </style>
 </head>
@@ -816,33 +800,28 @@
             <span class="skill">Technology</span>
             <span class="skill">Problem Solving</span>
           </div>
-<div class="socials">
-  <a href="https://www.facebook.com/Anushrut.Ghi" target="_blank" rel="noopener" aria-label="Facebook">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
-  </a>
 
-  <a href="http://instagram.com/ig_anushrut" target="_blank" rel="noopener" aria-label="Instagram">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
-  </a>
+          <div class="socials">
+            <a href="https://www.facebook.com/Anushrut.Ghi" target="_blank" rel="noopener" aria-label="Facebook">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" alt="Facebook">
+            </a>
 
-  <a href="http://github.com/Anushrutghi" target="_blank" rel="noopener" aria-label="GitHub">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
-  </a>
+            <a href="http://instagram.com/ig_anushrut" target="_blank" rel="noopener" aria-label="Instagram">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" alt="Instagram">
+            </a>
 
-  <a href="https://www.linkedin.com/in/anushrut-ghimire-5b1963280/" target="_blank" rel="noopener" aria-label="LinkedIn">
-    <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
-  </a>
+            <a href="http://github.com/Anushrutghi" target="_blank" rel="noopener" aria-label="GitHub">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/github.svg" alt="GitHub">
+            </a>
 
-  <!-- Email -->
-  <a href="mailto:anushrut256@gmail.com" aria-label="Email">
-    📧
-  </a>
+            <a href="https://www.linkedin.com/in/anushrut-ghimire-5b1963280/" target="_blank" rel="noopener" aria-label="LinkedIn">
+              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn">
+            </a>
 
-  <!-- Contact Page -->
-  <a href="contact.html" class="contact-btn" aria-label="Contact Me">
-    Contact
-  </a>
-</div>
+            <a href="mailto:anushrut256@gmail.com" aria-label="Email">📧</a>
+
+            <a href="contact.html" class="contact-btn" aria-label="Contact Me">Contact</a>
+          </div>
         </div>
       </div>
     </section>
